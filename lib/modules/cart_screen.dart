@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../controller/cart_controller.dart';
+import '../generated/assets.dart';
 import '../models/cart_model.dart';
 import '../shared/components/custom_text.dart';
 import '../shared/style/app_colors.dart';
@@ -29,7 +30,7 @@ class CartScreen extends StatelessWidget {
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
-                          Image.asset('assets/image/location.jpeg'),
+                          Image.asset(Assets.imageLocation),
                           Padding(
                             padding: EdgeInsets.only(top: 16.w, right: 10.w),
                             child: Row(
@@ -39,9 +40,6 @@ class CartScreen extends StatelessWidget {
                                   Icons.location_on_outlined,
                                   color: AppColors.whiteColor,
                                   size: 18,
-                                ),
-                                SizedBox(
-                                  width: 5.w,
                                 ),
                                 CustomText(
                                   text: 'Oxford Street',

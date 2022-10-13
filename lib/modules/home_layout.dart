@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../controller/category_controller.dart';
 import '../controller/home_controller.dart';
+import '../generated/assets.dart';
 import '../models/category_model.dart';
 import '../models/offers_model.dart';
 import '../shared/components/components.dart';
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Stack(
                               alignment: Alignment.center,
                               children: [
-                                Image.asset('assets/image/location.jpeg'),
+                                Image.asset(Assets.imageLocation),
                                 Padding(
                                   padding:
                                       EdgeInsets.only(top: 16.w, right: 10.w),
@@ -431,69 +432,83 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           SizedBox(
-            width: 10.w,
+            width: 12.w,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomText(
-                text: offers.name,
-                textStyle: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
-              CustomText(
-                text: offers.quantity,
-                textStyle: const TextStyle(fontWeight: FontWeight.w400),
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Icon(
-                    Icons.location_on,
-                    size: 18,
-                    color: AppColors.myGrey,
+          Container(
+            width: 210.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 5.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        text: offers.name,
+                        textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      CustomText(
+                        text: offers.quantity,
+                        textStyle: const TextStyle(fontWeight: FontWeight.w400),
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 8.w,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.location_on,
+                      size: 18,
+                      color: AppColors.myGrey,
+                    ),
+                    SizedBox(
+                      width: 8.w,
+                    ),
+                    CustomText(
+                      text: offers.time,
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.w400, color: AppColors.myGrey),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 5.h),
+                  child: Row(
+                    children: [
+                      CustomText(
+                        text: offers.price,
+                        textStyle: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.red),
+                      ),
+                      SizedBox(
+                        width: 10.h,
+                      ),
+                      CustomText(
+                        text: offers.oldPrice,
+                        textStyle: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w400,
+                            decoration: TextDecoration.lineThrough,
+                            color: Colors.grey),
+                      ),
+                    ],
                   ),
-                  CustomText(
-                    text: offers.time,
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.w400, color: AppColors.myGrey),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              Row(
-                children: [
-                  CustomText(
-                    text: offers.price,
-                    textStyle: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.red),
-                  ),
-                  SizedBox(
-                    width: 10.h,
-                  ),
-                  CustomText(
-                    text: offers.oldPrice,
-                    textStyle: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
-                        decoration: TextDecoration.lineThrough,
-                        color: Colors.grey),
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           )
         ],
       );

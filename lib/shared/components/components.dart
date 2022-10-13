@@ -86,10 +86,10 @@ class CustomTextFormFieldSearch extends StatelessWidget {
             fontSize: 18.sp,
           ),
           hintText: hint,
-          // hintStyle: TextStyle(
-          //   color: AppColors.myGery,
-          //   fontSize: 15.sp,
-          // ),
+          hintStyle: TextStyle(
+            color: AppColors.myGrey,
+            fontSize: 15.sp,
+          ),
           suffixIcon: IconButton(
             icon: Icon(suffixIcon),
             onPressed: () {

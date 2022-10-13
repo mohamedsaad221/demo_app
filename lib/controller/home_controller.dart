@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 import '../../modules/cart_screen.dart';
 import '../../modules/fav_screen.dart';
-import '../../modules/notifications_screen.dart';
+import '../../modules/news_screen.dart';
 import '../models/offers_model.dart';
 
 class HomeController extends GetxController {
