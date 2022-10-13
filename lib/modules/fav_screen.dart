@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_app/home/shared/components/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../shared/components/custom_text.dart';
 
 class FavScreen extends StatelessWidget {
   const FavScreen({Key? key}) : super(key: key);

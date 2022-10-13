@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_app/home/shared/widgets/custom_bottom_nav_bar.dart';
+import 'package:flutter_demo_app/shared/style/app_theme.dart';
+import 'package:flutter_demo_app/shared/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-
-import 'home/shared/style/app_theme.dart';
 
 void main() async {
   runApp(const MyApp());

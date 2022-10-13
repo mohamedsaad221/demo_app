@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/modules/home_layout.dart';
 import 'package:get/get.dart';
 
+import '../../modules/cart_screen.dart';
+import '../../modules/fav_screen.dart';
+import '../../modules/notifications_screen.dart';
 import '../models/offers_model.dart';
 
 class HomeController extends GetxController {
@@ -20,26 +23,26 @@ class HomeController extends GetxController {
 
   Future<void> changeIndex(int index) async {
     if (index == 0) {
-      //currentScreen = const HomeScreen();
+      currentScreen = const HomeScreen();
       currentTab = index;
       log(currentTab.toString());
       update();
     }
     if (index == 1) {
-      //currentScreen = const NotificationScreen();
+      currentScreen = const NewsScreen();
       currentTab = index;
       log(currentTab.toString());
       update();
     }
     if (index == 2) {
-      // currentScreen = const FavScreen();
+      currentScreen = const FavScreen();
       currentTab = index;
       log(currentTab.toString());
       update();
     }
     if (index == 3) {
       //await getLabProfile();
-      // currentScreen = const CartScreen();
+      currentScreen = const CartScreen();
       currentTab = index;
       log(currentTab.toString());
       update();
@@ -55,7 +58,7 @@ class HomeController extends GetxController {
       quantity: 'Pisces 5',
       time: '15 Minutes Away',
       price: '\$ 12',
-      color: Colors.purple,
+      color: Color(0xffFBEDD8),
       oldPrice: '\$ 18',
       isFav: false,
     ),
@@ -65,7 +68,7 @@ class HomeController extends GetxController {
       quantity: 'Pisces 5',
       time: '15 Minutes Away',
       price: '\$ 12',
-      color: Colors.lightGreen,
+      color: Color(0xffCDF5E7),
       oldPrice: '\$ 18',
       isFav: true,
     ),
@@ -75,7 +78,7 @@ class HomeController extends GetxController {
       quantity: 'Pisces 10',
       time: '20 Minutes Away',
       price: '\$ 15',
-      color: Colors.yellow,
+      color: Color(0xffFBEDD8),
       oldPrice: '\$ 18',
       isFav: false,
     ),
@@ -85,7 +88,7 @@ class HomeController extends GetxController {
       quantity: 'Pisces 15',
       time: '25 Minutes Away',
       price: '\$ 20',
-      color: Colors.red,
+      color: Color(0xffCDF5E7),
       oldPrice: '\$ 25',
       isFav: true,
     ),

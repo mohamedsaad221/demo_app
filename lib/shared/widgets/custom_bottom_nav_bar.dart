@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_app/home/controller/home_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../controller/cart_controller.dart';
+import '../../controller/home_controller.dart';
+import '../components/custom_text.dart';
 import '../style/app_colors.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -26,11 +28,31 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           child: controller.currentScreen,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: GetBuilder<CartController>(
+          init: CartController(),
+          builder: (controller) => CircleAvatar(
+            radius: 38,
             backgroundColor: AppColors.primaryColor,
-            elevation: 0.0,
-            onPressed: () {},
-            child: const Icon(Icons.shopping_cart_rounded)),
+            child: Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 22.h),
+                  child: const Icon(
+                    Icons.shopping_cart_outlined,
+                    size: 32,
+                    color: AppColors.whiteColor,
+                  ),
+                ),
+                CustomText(
+                  text: '\$ ${controller.totalPrice}',
+                  textStyle:
+                      TextStyle(fontSize: 16.sp, color: AppColors.whiteColor),
+                )
+              ],
+            ),
+          ),
+        ),
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
           notchMargin: 0,
@@ -54,9 +76,18 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                             Icons.home,
                             color: controller.currentTab == 0
                                 ? AppColors.primaryColor
-                                : AppColors.blackColor,
-                            size: 28,
+                                : AppColors.myGrey,
+                            size: 35,
                           ),
+                          CustomText(
+                            text: 'Grocery',
+                            textStyle: TextStyle(
+                              fontSize: 14.sp,
+                              color: controller.currentTab == 0
+                                  ? AppColors.primaryColor
+                                  : AppColors.myGrey,
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -69,11 +100,21 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Icon(
-                            Icons.notifications,
+                            Icons.notifications_none_outlined,
                             color: controller.currentTab == 1
                                 ? AppColors.primaryColor
-                                : AppColors.blackColor,
+                                : AppColors.myGrey,
+                            size: 35,
                           ),
+                          CustomText(
+                            text: 'News',
+                            textStyle: TextStyle(
+                              fontSize: 14.sp,
+                              color: controller.currentTab == 1
+                                  ? AppColors.primaryColor
+                                  : AppColors.myGrey,
+                            ),
+                          )
                         ],
                       ),
                     )
@@ -97,8 +138,18 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                             Icons.favorite_border,
                             color: controller.currentTab == 2
                                 ? AppColors.primaryColor
-                                : AppColors.blackColor,
+                                : AppColors.myGrey,
+                            size: 35,
                           ),
+                          CustomText(
+                            text: 'Favorites',
+                            textStyle: TextStyle(
+                              fontSize: 14.sp,
+                              color: controller.currentTab == 2
+                                  ? AppColors.primaryColor
+                                  : AppColors.myGrey,
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -114,9 +165,18 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                             Icons.shopping_bag_rounded,
                             color: controller.currentTab == 3
                                 ? AppColors.primaryColor
-                                : AppColors.blackColor,
-                            size: 28,
+                                : AppColors.myGrey,
+                            size: 35,
                           ),
+                          CustomText(
+                            text: 'Cart',
+                            textStyle: TextStyle(
+                              fontSize: 14.sp,
+                              color: controller.currentTab == 3
+                                  ? AppColors.primaryColor
+                                  : AppColors.myGrey,
+                            ),
+                          )
                         ],
                       ),
                     )

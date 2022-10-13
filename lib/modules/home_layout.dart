@@ -1,17 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_app/home/controller/category_controller.dart';
-import 'package:flutter_demo_app/home/controller/home_controller.dart';
-import 'package:flutter_demo_app/home/models/category_model.dart';
-import 'package:flutter_demo_app/home/models/offers_model.dart';
-import 'package:flutter_demo_app/home/shared/components/components.dart';
-import 'package:flutter_demo_app/home/shared/components/custom_text.dart';
-import 'package:flutter_demo_app/home/shared/style/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
-import '../home/shared/widgets/custom_bottom_nav_bar.dart';
+import '../controller/category_controller.dart';
+import '../controller/home_controller.dart';
+import '../models/category_model.dart';
+import '../models/offers_model.dart';
+import '../shared/components/components.dart';
+import '../shared/components/custom_text.dart';
+import '../shared/style/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,21 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) => Scaffold(
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: CircleAvatar(
-            radius: 32,
-            backgroundColor: AppColors.primaryColor,
-            child: Stack(
-              children: const [
-                Icon(Icons.shopping_cart_rounded),
-                CustomText(
-                  text: '91',
-                )
-              ],
-            ),
-          ),
-          bottomNavigationBar: const CustomBottomNavBar(),
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
@@ -54,36 +38,68 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Row(
-                        children: const [
-                          Text('fffffffffffff'),
-                          Spacer(),
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundColor: AppColors.blackColor,
-                            child: CircleAvatar(
-                              backgroundColor: AppColors.whiteColor,
-                              radius: 18,
+                        children: [
+                          SizedBox(
+                            width: 120.w,
+                            height: 120.h,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Image.asset('assets/image/location.jpeg'),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: 16.w, right: 10.w),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.location_on_outlined,
+                                        color: AppColors.whiteColor,
+                                        size: 18,
+                                      ),
+                                      SizedBox(
+                                        width: 5.w,
+                                      ),
+                                      CustomText(
+                                        text: 'Mustafa St.',
+                                        textStyle: TextStyle(
+                                            fontSize: 14.sp,
+                                            color: AppColors.whiteColor),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          const Spacer(),
+                          Padding(
+                            padding: EdgeInsets.only(top: 16.h),
+                            child: const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: AppColors.blackColor,
+                              child: CircleAvatar(
+                                backgroundColor: AppColors.whiteColor,
+                                radius: 18,
+                              ),
                             ),
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
                       CustomTextFormFieldSearch(
                         width: double.infinity,
-                        hint: 'search thount of products',
+                        hint: 'Search in thousands of products',
                         radius: 15.r,
-                        fillColor: Colors.grey.shade200,
+                        fillColor: const Color(0xffF5F7F9),
                         filled: true,
                         type: TextInputType.text,
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: const Icon(Icons.search),
                         validate: (value) {
                           return null;
                         },
                       ),
                       SizedBox(
-                        height: 16.h,
+                        height: 25.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,9 +120,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.r),
-                                      color: AppColors.myGrey.withOpacity(.5),
-                                    ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                        color: const Color(0xffE3DDD6)),
                                     width: 60.w,
                                   ),
                                   SizedBox(
@@ -115,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Home Address',
@@ -160,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.r),
-                                      color: AppColors.myGrey.withOpacity(.5),
+                                      color: const Color(0xffE3DDD6),
                                     ),
                                     width: 60.w,
                                   ),
@@ -172,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Office Address',
@@ -205,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       SizedBox(
-                        height: 22.h,
+                        height: 25.h,
                       ),
                       Row(
                         children: [
@@ -231,16 +247,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(
                   height: 120.h,
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: CategoryController.category.length,
-                    padding: EdgeInsets.only(left: 16.w),
-                    itemBuilder: (BuildContext context, int index) {
-                      return buildCategory(CategoryController.category[index]);
-                    },
-                    separatorBuilder: (context, index) => SizedBox(
-                      width: 12.w,
+                  child: GetBuilder<CategoryController>(
+                    init: CategoryController(),
+                    builder: (controller) => ListView.separated(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.category.length,
+                      padding: EdgeInsets.only(left: 16.w),
+                      itemBuilder: (BuildContext context, int index) {
+                        return buildCategory(controller.category[index]);
+                      },
+                      separatorBuilder: (context, index) => SizedBox(
+                        width: 12.w,
+                      ),
                     ),
                   ),
                 ),
@@ -425,13 +444,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 8.h,
               ),
               CustomText(
-                text: offers.price,
+                text: offers.quantity,
                 textStyle: const TextStyle(fontWeight: FontWeight.w400),
               ),
               SizedBox(
-                height: 8.h,
+                height: 16.h,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Icon(
                     Icons.location_on,
@@ -449,7 +469,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               SizedBox(
-                height: 8.h,
+                height: 16.h,
               ),
               Row(
                 children: [
